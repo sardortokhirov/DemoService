@@ -5,6 +5,7 @@ import com.example.demoservice.model.DemoClassDto;
 import com.example.demoservice.model.Student;
 import com.example.demoservice.model.cassandra.DemoClass;
 import com.example.demoservice.model.payload.DemoClassPayload;
+import com.example.demoservice.model.payload.DemoClassStudentPayload;
 import com.example.demoservice.repository.StudentRepository;
 import com.example.demoservice.service.DemoClassService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -40,13 +41,13 @@ public class DemoClassController {
     }
 
     @GetMapping(value = "/posts/{username}")
-    public ResponseEntity<List<DemoClass>> getTeacherDemoClass(@PathVariable String username) {
+    public ResponseEntity<List<DemoClassPayload>> getTeacherDemoClass(@PathVariable String username) {
         return ResponseEntity.ok(demoClassService.getByTeacherId(username));
     }
 
     @GetMapping("/students/{uuid}")
-    public void getStudentsByPostId(@PathVariable UUID uuid) {
-        demoClassService.getStudentByPostId(uuid);
+    public ResponseEntity<List<DemoClassStudentPayload>> getStudentsByPostId(@PathVariable UUID uuid) {
+        return ResponseEntity.ok(demoClassService.getStudentByPostId(uuid));
     }
 
     @GetMapping("/is-attending/{uuid}/{username}")

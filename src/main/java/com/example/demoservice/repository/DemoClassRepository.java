@@ -18,8 +18,8 @@ import java.util.UUID;
 public interface DemoClassRepository extends CassandraRepository<DemoClass, UUID> {
     @Query("SELECT * FROM demo_class WHERE student_id = ?0  ALLOW FILTERING")
     List<DemoClass> findByStudentId(UUID uuid);
-    @Query("SELECT * FROM demo_class WHERE post_id = ?0  ALLOW FILTERING")
-    List<DemoClass> findByPostId(UUID uuid);
+    @Query("SELECT  * FROM demo_class WHERE post_id = ?0  ALLOW FILTERING")
+    List<DemoClass> findAlLStudentsByPostId(UUID uuid);
     @Query("SELECT * FROM demo_class WHERE teacher_id = ?0  ALLOW FILTERING")
     List<DemoClass> findByTeacherId(UUID uuid);
 

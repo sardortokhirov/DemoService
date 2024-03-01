@@ -24,14 +24,6 @@ public class ClassPostService {
 
     private final ClassPostRepository classPostRepository;
 
-//    public List<DemoClassPayload> getDemoPayload(List<DemoClass> demoClasses) {
-//        List<DemoClassPayload> demoClassPayloads = demoClasses.stream().map(demo -> {
-//            ClassPost classPost = repository.findByPostId(demo.getPostId());
-//            DemoClassPayload classPayload = new DemoClassPayload(classPost.getPostId(), classPost.getTeacherId(), classPost.getIntroVideoImgLink(), classPost.getDemoTime(), classPost.getTitle());
-//            return classPayload;
-//        }).collect(Collectors.toList());
-//        return demoClassPayloads;
-//    }
 public List<DemoClassPayload> getDemoPayload(List<DemoClass> demoClasses) {
     List<UUID> postIds = demoClasses.stream()
             .map(DemoClass::getPostId)

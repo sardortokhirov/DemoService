@@ -3,16 +3,21 @@ package com.example.demoservice.service;
 import com.example.demoservice.model.DemoClassDto;
 import com.example.demoservice.model.Student;
 import com.example.demoservice.model.Teacher;
+import com.example.demoservice.model.User;
 import com.example.demoservice.model.cassandra.DemoClass;
 import com.example.demoservice.model.payload.DemoClassPayload;
+import com.example.demoservice.model.payload.DemoClassStudentPayload;
 import com.example.demoservice.repository.DemoClassRepository;
 import com.example.demoservice.repository.StudentRepository;
 import com.example.demoservice.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 /**
@@ -40,14 +45,38 @@ public class DemoClassService {
         return classPostService.getDemoPayload(demoClassRepository.findByStudentId(student.getStudentId()));
     }
 
-    public List<DemoClass> getByTeacherId(String userName) {
+    public List<DemoClassPayload> getByTeacherId(String userName) {
         Teacher teacher = teacherRepository.findTeacherByUsername(userName).orElseThrow();
-        return demoClassRepository.findByTeacherId(teacher.getTeacherId());
+        Set<UUID> uuidSet=new HashSet<>();
+        List<DemoClass> byTeacherId = demoClassRepository.findByTeacherId(teacher.getTeacherId()).stream()
+                .filter(demoClass -> {
+                    if (!uuidSet.contains(demoClass.getPostId())) {
+                        uuidSet.add(demoClass.getPostId());
+                        return true;
+                    }
+                    return false;
+                })
+                .collect(Collectors.toList());
+
+        return classPostService.getDemoPayload(byTeacherId);
     }
 
-    public List<DemoClass> getStudentByPostId(UUID uuid) {
-        return demoClassRepository.findByPostId(uuid);
+    public List<DemoClassStudentPayload> getStudentByPostId(UUID uuid) {
+        List<UUID> byPostId = demoClassRepository.findAlLStudentsByPostId(uuid).stream().map(demoClass -> demoClass.getStudentId()).toList();
+        List<Student> students=studentRepository.findAllByIdIn(byPostId);
+        return students.stream()
+                .map(student -> {
+                    User user=student.getUser();
+                    DemoClassStudentPayload payload = new DemoClassStudentPayload();
+                    payload.setFirstName(user.getFirstName());
+                    payload.setLastName(user.getLastName());
+                    payload.setUserName(user.getUserName());
+                    payload.setCountryName(user.getCountry().getCountryName());
+                    return payload;
+                })
+                .collect(Collectors.toList());
     }
+
 
     public boolean isStudentAttending(UUID uuid, String userName) {
         Student student = studentRepository.findStudentByUsername(userName).orElseThrow();
