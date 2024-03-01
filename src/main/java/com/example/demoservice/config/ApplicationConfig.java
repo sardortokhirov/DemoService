@@ -1,6 +1,6 @@
-package com.example.publish_service.config;
+package com.example.demoservice.config;
 
-import com.example.publish_service.service.UserDetailServiceImpl;
+import com.example.demoservice.service.UserDetailServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,6 @@
-package com.example.publish_service.repository;
+package com.example.demoservice.repository;
 
-import com.example.publish_service.token.Token;
+import com.example.demoservice.token.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

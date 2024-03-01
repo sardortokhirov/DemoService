@@ -1,4 +1,4 @@
-package com.example.publish_service.role;
+package com.example.demoservice.role;
 
 /**
  * Date-21/01/2024

@@ -1,6 +1,6 @@
-package com.example.publish_service.service;
+package com.example.demoservice.service;
 
-import com.example.publish_service.repository.UserRepository;
+import com.example.demoservice.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

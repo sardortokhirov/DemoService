@@ -1,4 +1,4 @@
-package com.example.publish_service.model.cassandra;
+package com.example.demoservice.model.cassandra;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +10,6 @@ import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;

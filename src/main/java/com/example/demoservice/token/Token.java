@@ -1,6 +1,6 @@
-package com.example.publish_service.token;
+package com.example.demoservice.token;
 
-import com.example.publish_service.model.entity.User;
+import com.example.demoservice.model.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

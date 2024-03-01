@@ -1,4 +1,4 @@
-package com.example.publish_service.config;
+package com.example.demoservice.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

@@ -1,6 +1,6 @@
-package com.example.publish_service.repository.cassandra;
+package com.example.demoservice.repository;
 
-import com.example.publish_service.model.cassandra.ClassPost;
+import com.example.demoservice.model.cassandra.ClassPost;
 import org.springframework.data.cassandra.repository.CassandraRepository;
 import org.springframework.data.cassandra.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -17,4 +17,10 @@ import java.util.UUID;
 public interface ClassPostRepository extends CassandraRepository<ClassPost, UUID> {
     @Query("SELECT * FROM class_post WHERE teacher_id = ?0")
     List<ClassPost> findClassesByTeacherId(UUID teacherId);
+
+    @Query("SELECT * FROM class_post WHERE post_id = ?0")
+    ClassPost findByPostId(UUID postId);
+
+    @Query("SELECT * FROM class_post WHERE post_id IN ?0")
+    List<ClassPost> findByPostIds(List<UUID> postIds);
 }

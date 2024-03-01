@@ -1,4 +1,4 @@
-package com.example.publish_service.token;
+package com.example.demoservice.token;
 
 /**
  * Date-21/01/2024

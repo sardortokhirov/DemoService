@@ -1,9 +1,8 @@
-package com.example.settings.repository;
+package com.example.demoservice.repository;
 
-import com.example.settings.model.Student;
-import com.example.settings.model.Teacher;
-import com.example.settings.model.User;
-import com.example.settings.role.Role;
+
+import com.example.demoservice.model.Student;
+import com.example.demoservice.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -21,7 +20,6 @@ public interface StudentRepository extends JpaRepository<Student, UUID> {
     @Query("SELECT s FROM Student s WHERE s.user.userName = :username")
    Optional<Student>  findStudentByUsername(@Param("username") String username);
 
-    Student findByUser(User user);
 
 
 }

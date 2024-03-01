@@ -1,6 +1,6 @@
-package com.example.publish_service.config;
+package com.example.demoservice.config;
 
-import com.example.publish_service.repository.TokenRepository;
+import com.example.demoservice.repository.TokenRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
