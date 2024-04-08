@@ -28,7 +28,8 @@ aws:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/loomo
+#    url: jdbc:postgresql://localhost:5433/loomo
+    url: jdbc:postgresql://docker.loomo.online:5432/loomo
     username: postgres
     password: sardor
   jpa:
