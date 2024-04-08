@@ -72,6 +72,7 @@ public class DemoClassService {
                     payload.setLastName(user.getLastName());
                     payload.setUserName(user.getUserName());
                     payload.setCountryName(user.getCountry().getCountryName());
+                    payload.setStudentId(student.getStudentId());
                     return payload;
                 })
                 .collect(Collectors.toList());

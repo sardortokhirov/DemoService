@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 /**
  * Date-3/1/2024
  * By Sardor Tokhirov
@@ -19,4 +21,5 @@ public class DemoClassStudentPayload {
     private String lastName;
     private String userName;
     private String countryName;
+    private UUID studentId;
 }

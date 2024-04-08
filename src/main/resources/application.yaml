@@ -20,7 +20,7 @@ server:
 
 
 aws:
-  region: us-east-1
+  region: eu-north-1
   s3:
     buckets:
       postImage: loomo-post-image
@@ -46,12 +46,12 @@ spring:
   codec:
     max-in-memory-size: 100MB
   cassandra:
-    contact-points: loomo-cassandra-container
+    contact-points: docker.loomo.online
     keyspace-name: loomo_keyspace
     port: 9042
     replication:
       class: SimpleStrategy
-      replication-factor: 2
+      replication-factor: 1
     local-datacenter: datacenter1
     schema-action: create_if_not_exists
 #    request:
