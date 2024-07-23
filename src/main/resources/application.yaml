@@ -23,13 +23,13 @@ aws:
   region: eu-north-1
   s3:
     buckets:
-      postImage: loomo-post-image
+      postImage: post-image-loomo
 
 
 spring:
   datasource:
-#    url: jdbc:postgresql://localhost:5433/loomo
-    url: jdbc:postgresql://docker.loomo.online:5432/loomo
+    url: jdbc:postgresql://localhost:5432/loomo
+#    url: jdbc:postgresql://docker.loomo.online:5432/loomo
     username: postgres
     password: sardor
   jpa:
@@ -47,7 +47,8 @@ spring:
   codec:
     max-in-memory-size: 100MB
   cassandra:
-    contact-points: docker.loomo.online
+#    contact-points: docker.loomo.online
+    contact-points: loomo-cassandra-container
     keyspace-name: loomo_keyspace
     port: 9042
     replication:
