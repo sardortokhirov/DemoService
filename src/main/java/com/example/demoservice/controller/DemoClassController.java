@@ -59,4 +59,11 @@ public class DemoClassController {
     public ResponseEntity<Boolean> isStudentAttendingToAny(@PathVariable String username) {
         return ResponseEntity.ok(demoClassService.isStudentAttendingToAny(username));
     }
+
+    @GetMapping("/is-demo-classes-exists/{username}")
+    public ResponseEntity<Boolean> isTeacherPostExists(@PathVariable String username) {
+        return ResponseEntity.ok(demoClassService.isTeacherPostExists(username));
+    }
+
+
 }

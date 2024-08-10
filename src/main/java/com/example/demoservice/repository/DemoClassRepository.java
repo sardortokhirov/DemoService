@@ -28,4 +28,7 @@ public interface DemoClassRepository extends CassandraRepository<DemoClass, UUID
 
     @Query("SELECT * FROM demo_class WHERE student_id = ?0   LIMIT 1  ALLOW FILTERING")
     Optional<DemoClass> existsByStudentId(UUID studentId);
+
+    @Query("SELECT * FROM demo_class WHERE teacher_id = ?0   LIMIT 1  ALLOW FILTERING")
+    Optional<DemoClass> existsByTeacherId(UUID teacherId);
 }

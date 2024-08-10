@@ -88,4 +88,10 @@ public class DemoClassService {
         Student student = studentRepository.findStudentByUsername(userName).orElseThrow();
         return demoClassRepository.existsByStudentId(student.getStudentId()).isPresent();
     }
+
+
+    public boolean isTeacherPostExists(String username) {
+        Teacher teacher = teacherRepository.findTeacherByUsername(username).orElseThrow();
+        return demoClassRepository.existsByTeacherId(teacher.getTeacherId()).isPresent();
+    }
 }
